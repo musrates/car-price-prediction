@@ -1,78 +1,78 @@
-# Car Price Prediction Model
+# Araba Fiyat Tahmin Modeli
 
-Machine Learning project for predicting used car prices using Gradient Boosting Regressor.
+Gradient Boosting Regressor kullanarak ikinci el araç fiyat tahmini yapan Machine Learning projesi.
 
-## 📋 Project Overview
+## 📋 Proje Özeti
 
-- **Goal:** Predict used car prices based on features (brand, age, mileage, engine, etc.)
-- **Model:** Gradient Boosting Regressor (Tuned with GridSearchCV)
-- **Performance:** R² = 0.7912 (79.12% variance explained)
-- **Average Error:** ₹183,392 (≈24.83%)
+- **Amaç:** Araç özelliklerine göre (marka, yaş, km, motor vb.) ikinci el fiyat tahmini
+- **Model:** Gradient Boosting Regressor (GridSearchCV ile optimize edilmiş)
+- **Başarı:** R² = 0.7912 (%79.12 açıklama gücü)
+- **Ortalama Hata:** ₹183,392 (≈%24.83)
 
-## 📁 Project Structure
+## 📁 Proje Yapısı
 
 ```
 car-price-prediction/
-├── model.py                              # Main ML pipeline
-├── car_price.csv                         # Dataset (5,512 records)
-├── .gitignore                            # Git ignore rules
-├── README.md                             # Project documentation
+├── model.py                              # Ana ML kodu
+├── car_price.csv                         # Veri seti (5,512 kayıt)
+├── .gitignore                            # Git ignore kuralları
+├── README.md                             # Proje dökümantasyonu
 │
-├── Visualizations/
-│   ├── correlation_matrix.png           # Correlation heatmap
-│   ├── age_vs_price.png                 # Age vs price scatter plot
-│   ├── model_comparison_improved.png    # Model comparison charts
-│   ├── feature_importance_improved.png  # Feature importance
-│   └── error_analysis.png               # Error analysis plots
+├── Grafikler/
+│   ├── correlation_matrix.png           # Korelasyon ısı haritası
+│   ├── age_vs_price.png                 # Yaş-fiyat scatter grafiği
+│   ├── model_comparison_improved.png    # Model karşılaştırma grafikleri
+│   ├── feature_importance_improved.png  # Özellik önem dereceleri
+│   └── error_analysis.png               # Hata analizi grafikleri
 │
-└── Scripts/
-    └── make_extra_figures.py            # Generate additional visualizations
+└── Scriptler/
+    └── make_extra_figures.py            # Ek görsel oluşturma scripti
 ```
 
-## 🚀 Installation
+## 🚀 Kurulum
 
 ```bash
-# Clone the repository
-git clone https://github.com/yourusername/car-price-prediction.git
+# Repoyu klonla
+git clone https://github.com/kullaniciadi/car-price-prediction.git
 cd car-price-prediction
 
-# Create virtual environment
+# Virtual environment oluştur
 python -m venv .venv
 .venv\Scripts\activate  # Windows
 source .venv/bin/activate  # Linux/Mac
 
-# Install requirements
+# Gereksinimleri yükle
 pip install pandas numpy matplotlib seaborn scikit-learn
 ```
 
-## 💻 Usage
+## 💻 Kullanım
 
 ```bash
-# Run the main model (training + prediction + visualizations)
+# Ana modeli çalıştır (eğitim + tahmin + görselleştirme)
 python model.py
 ```
 
-**Outputs:**
-- 5 PNG visualization files
-- Trained models (best_model.pkl, scaler.pkl, feature_names.pkl)
-- CSV and TXT reports
+**Çıktılar:**
+- 5 adet PNG görsel dosyası
+- Eğitilmiş modeller (best_model.pkl, scaler.pkl, feature_names.pkl)
+- CSV ve TXT raporlar
 
-## 📊 Features
+## 📊 Özellikler
 
-**Raw Features (9):**
+**Ham Özellikler (9):**
 - car_name, car_prices_in_rupee, kms_driven, fuel_type
 - transmission, ownership, manufacture, engine, Seats
 
-**Engineered Features (5):**
-- `brand`: Brand extracted from car name (most important feature!)
-- `car_age`: Vehicle age (2025 - manufacture year)
-- `km_per_year`: Annual mileage usage
-- `engine_per_seat`: Engine-to-seat ratio
-- `high_performance`: High performance flag (>2000cc)
+**Türetilmiş Özellikler (5):**
+- `brand`: Araç adından çıkarılan marka (en önemli özellik!)
+- `car_age`: Araç yaşı (2025 - üretim yılı)
+- `km_per_year`: Yıllık kilometre kullanımı
+- `engine_per_seat`: Motor hacmi/koltuk oranı
+- `high_performance`: Yüksek performans bayrağı (>2000cc)
 
-**Final:** 33 features (after one-hot encoding)
+**Nihai:** 33 özellik (one-hot encoding sonrası)
 
-## 🎯 Model Results
+## 🎯 Model Sonuçları
 
 | Model | Test R² | RMSE (₹) | MAE (₹) |
 |-------|---------|----------|---------|
@@ -81,31 +81,31 @@ python model.py
 | Ridge/Lasso | ≈0.709 | 329,578 | 227,426 |
 | Decision Tree | 0.6579 | 357,354 | 219,217 |
 
-**Hyperparameters (GridSearchCV):**
+**Hiperparametreler (GridSearchCV):**
 - n_estimators: 200
 - max_depth: 5
 - learning_rate: 0.1
 - min_samples_split: 2
 
-## 📈 Correlation Insights
+## 📈 Korelasyon Bulguları
 
-- `engine_numeric` ↗ price: **+0.68** (strong positive)
-- `car_age` ↗ price: **−0.52** (moderate negative)
-- `kms_numeric` ↗ price: **−0.39** (negative)
-- `km_per_year` ↗ price: **−0.31** (negative)
+- `engine_numeric` ↗ fiyat: **+0.68** (güçlü pozitif)
+- `car_age` ↗ fiyat: **−0.52** (orta negatif)
+- `kms_numeric` ↗ fiyat: **−0.39** (negatif)
+- `km_per_year` ↗ fiyat: **−0.31** (negatif)
 
-## 🔧 Technologies
+## 🔧 Teknolojiler
 
 - **Python 3.13**
-- **pandas** - Data manipulation
-- **scikit-learn** - ML models & preprocessing
-- **matplotlib & seaborn** - Visualizations
-- **numpy** - Numerical computations
+- **pandas** - Veri manipülasyonu
+- **scikit-learn** - ML modelleri ve ön işleme
+- **matplotlib & seaborn** - Görselleştirme
+- **numpy** - Sayısal hesaplamalar
 
-## 👤 Author
+## 👤 Yazar
 
-Your Name
+[Adınız]
 
-## 📄 License
+## 📄 Lisans
 
-This project is for educational purposes.
+Bu proje eğitim amaçlıdır.
