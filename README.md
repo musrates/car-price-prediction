@@ -1,83 +1,78 @@
 # Car Price Prediction Model
 
-Machine Learning regresyon projesi - ikinci el araç fiyat tahmini.
+Machine Learning project for predicting used car prices using Gradient Boosting Regressor.
 
-## 📋 Proje Özeti
+## 📋 Project Overview
 
-- **Amaç:** Araç özelliklerinden (marka, yaş, km, motor vb.) ikinci el satış fiyatını tahmin etmek
-- **Model:** Gradient Boosting Regressor (Tuned)
-- **Başarı:** R² = 0.7912 (%79.12 açıklama gücü)
-- **Ortalama Hata:** ₹183,392 (≈%24.83)
+- **Goal:** Predict used car prices based on features (brand, age, mileage, engine, etc.)
+- **Model:** Gradient Boosting Regressor (Tuned with GridSearchCV)
+- **Performance:** R² = 0.7912 (79.12% variance explained)
+- **Average Error:** ₹183,392 (≈24.83%)
 
-## 📁 Dosya Yapısı
+## 📁 Project Structure
 
 ```
-mlbir/
-├── model.py                              # Ana ML pipeline
-├── car_price.csv                         # Veri seti (5,512 kayıt)
-├── .gitignore                            # Git ignore kuralları
+car-price-prediction/
+├── model.py                              # Main ML pipeline
+├── car_price.csv                         # Dataset (5,512 records)
+├── .gitignore                            # Git ignore rules
+├── README.md                             # Project documentation
 │
-├── Grafikler/
-│   ├── correlation_matrix.png           # Korelasyon ısı haritası
-│   ├── age_vs_price.png                 # Yaş-fiyat scatter
-│   ├── model_comparison_improved.png    # Model karşılaştırma
-│   ├── feature_importance_improved.png  # Özellik önemleri
-│   └── error_analysis.png               # Hata analizi
+├── Visualizations/
+│   ├── correlation_matrix.png           # Correlation heatmap
+│   ├── age_vs_price.png                 # Age vs price scatter plot
+│   ├── model_comparison_improved.png    # Model comparison charts
+│   ├── feature_importance_improved.png  # Feature importance
+│   └── error_analysis.png               # Error analysis plots
 │
-├── Raporlar/
-│   ├── README_SINAV.md                  # Sınav özeti (kısa)
-│   ├── PROJE_RAPORU.md                  # Detaylı markdown rapor
-│   └── PROJE_RAPORU.docx                # Word raporu
-│
-└── Yardımcı Scriptler/
-    ├── export_to_word.py                # Word raporu üreten script
-    └── make_extra_figures.py            # Ek görsel üreten script
+└── Scripts/
+    └── make_extra_figures.py            # Generate additional visualizations
 ```
 
-## 🚀 Kurulum
+## 🚀 Installation
 
 ```bash
-# Repository'yi klonla
-git clone https://github.com/kullaniciadi/car-price-prediction.git
+# Clone the repository
+git clone https://github.com/yourusername/car-price-prediction.git
 cd car-price-prediction
 
-# Virtual environment oluştur
+# Create virtual environment
 python -m venv .venv
 .venv\Scripts\activate  # Windows
 source .venv/bin/activate  # Linux/Mac
 
-# Gereksinimleri yükle
-pip install pandas numpy matplotlib seaborn scikit-learn python-docx
+# Install requirements
+pip install pandas numpy matplotlib seaborn scikit-learn
 ```
 
-## 💻 Kullanım
+## 💻 Usage
 
 ```bash
-# Ana modeli çalıştır (eğitim + tahmin + grafikler)
+# Run the main model (training + prediction + visualizations)
 python model.py
 ```
 
-**Çıktılar:**
-- 5 adet PNG grafik
-- Eğitilmiş model (best_model.pkl, scaler.pkl, feature_names.pkl)
-- CSV ve TXT raporlar
+**Outputs:**
+- 5 PNG visualization files
+- Trained models (best_model.pkl, scaler.pkl, feature_names.pkl)
+- CSV and TXT reports
 
-## 📊 Özellikler
+## 📊 Features
 
-**Ham Özellikler (9):**
+**Raw Features (9):**
 - car_name, car_prices_in_rupee, kms_driven, fuel_type
 - transmission, ownership, manufacture, engine, Seats
 
-**Türetilmiş Özellikler (5):**
-- `brand`: Marka (en önemli özellik!)
-- `car_age`: Araba yaşı (2025 - üretim yılı)
-- `km_per_year`: Yıllık km kullanımı
-- `engine_per_seat`: Motor/koltuk oranı
-- `high_performance`: Yüksek performans bayrağı (>2000cc)
+**Engineered Features (5):**
+- `brand`: Brand extracted from car name (most important feature!)
+- `car_age`: Vehicle age (2025 - manufacture year)
+- `km_per_year`: Annual mileage usage
+- `engine_per_seat`: Engine-to-seat ratio
+- `high_performance`: High performance flag (>2000cc)
 
-**Nihai:** 33 özellik (one-hot encoding sonrası)
+**Final:** 33 features (after one-hot encoding)
 
-## 🎯 Model Sonuçları
+## 🎯 Model Results
 
 | Model | Test R² | RMSE (₹) | MAE (₹) |
 |-------|---------|----------|---------|
@@ -92,31 +87,25 @@ python model.py
 - learning_rate: 0.1
 - min_samples_split: 2
 
-## 📈 Korelasyon Bulguları
+## 📈 Correlation Insights
 
-- `engine_numeric` ↗ fiyat: **+0.68** (güçlü pozitif)
-- `car_age` ↗ fiyat: **−0.52** (orta negatif)
-- `kms_numeric` ↗ fiyat: **−0.39** (negatif)
-- `km_per_year` ↗ fiyat: **−0.31** (negatif)
+- `engine_numeric` ↗ price: **+0.68** (strong positive)
+- `car_age` ↗ price: **−0.52** (moderate negative)
+- `kms_numeric` ↗ price: **−0.39** (negative)
+- `km_per_year` ↗ price: **−0.31** (negative)
 
-## 🔧 Teknolojiler
+## 🔧 Technologies
 
 - **Python 3.13**
-- **pandas** - Veri manipülasyonu
-- **scikit-learn** - ML modelleri
-- **matplotlib & seaborn** - Görselleştirme
-- **python-docx** - Word raporu
+- **pandas** - Data manipulation
+- **scikit-learn** - ML models & preprocessing
+- **matplotlib & seaborn** - Visualizations
+- **numpy** - Numerical computations
 
-## 📝 Detaylı Raporlar
+## 👤 Author
 
-- [`README_SINAV.md`](README_SINAV.md) - Sınavda yazmalık kısa özet
-- [`PROJE_RAPORU.md`](PROJE_RAPORU.md) - Kapsamlı proje raporu
-- `PROJE_RAPORU.docx` - Word formatında rapor
+Your Name
 
-## 👤 Yazar
+## 📄 License
 
-[Adınız]
-
-## 📄 Lisans
-
-Bu proje eğitim amaçlıdır.
+This project is for educational purposes.
