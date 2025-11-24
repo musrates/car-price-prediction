@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# Model Files (büyük boyutlu)
+*.pkl
+*.h5
+*.joblib
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary Word files
+~$*.doc*
+~$*.ppt*
+~$*.xls*
+
+# Project specific - tekrar üretilebilir dosyalar
+detailed_report.txt
+model_comparison_results.csv
+
+# Duplikasyon ve geçici sürümler
+*_v2.*
+*_old.*
+*_backup.*
+
+# Export scripts (isteğe bağlı - eğer sadece sonuç dosyaları istiyorsan)
+# export_to_word.py
+# export_to_word_summary.py
+# make_extra_figures.py
