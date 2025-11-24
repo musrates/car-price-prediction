@@ -306,7 +306,7 @@ make_extra_figures.py       # Ek görsel oluşturma
 
 ## 👤 Yazar
 
-**Mustafa Ateş**  
+**Musa Adıgüzel**  
 🐙 GitHub: [github.com/musrates](https://github.com/musrates)
 
 ---
