@@ -144,23 +144,5 @@ car-price-prediction/
 - Gradient Boosting, Random Forest'tan %5 daha iyi ama eğitim süresi 3-4 kat daha uzun
 - Premium markalarda (BMW, Mercedes) veri az olduğu için tahminler tutarsız
 
-## Sonraki Adımlar
 
-- Flask veya FastAPI ile basit bir web API yapıp deploy etmeyi düşünüyorum
-- Streamlit ile kullanıcı dostu bir arayüz eklenebilir
-- Ensemble model (VotingRegressor) deneyeceğim, belki %2-3 daha iyileştirme olur
-- Veri setine renk, bölge, kaza geçmişi gibi özellikler eklenirse sonuçlar daha da iyileşebilir
 
-## Bilinen Sorunlar
-
-- Premium segment (2M+ fiyat) tahminleri güvenilir değil, veri az
-- Elektrikli araç sayısı çok düşük (30 kayıt), bu segment için ayrı model gerekebilir
-- Eski modeller (15+ yaş) için tahminler daha az başarılı
-
-## Lisans
-
-MIT License - eğitim amaçlı bir proje
-
----
-
-Sorular için issue açabilirsiniz. Katkıda bulunmak isterseniz pull request gönderin.
